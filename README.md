@@ -1,6 +1,13 @@
 cmark-lua
 =========
 
+This is a fork with a quick/janky fix to get `cmark-lua` compiling on Windows with MSVC
+
+1. Clone this repository
+2. `luarocks make cmark-scm-0.rockspec` (MSVC compiler must be available to Luarocks, e.g. in a MSVC developer console, executed `vcvars64.bat`, etc)
+
+---
+
 Lua wrapper for [libcmark](https://github.com/jgm/cmark),
 CommonMark parsing and rendering library
 

@@ -1,13 +1,12 @@
-#include <stdarg.h>
-#include <string.h>
 #include <assert.h>
-#include <string.h>
+#include <limits.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <limits.h>
+#include <string.h>
 
-#include "config.h"
 #include "cmark_ctype.h"
 #include "buffer.h"
 
@@ -31,7 +30,7 @@ void cmark_strbuf_init(cmark_mem *mem, cmark_strbuf *buf,
     cmark_strbuf_grow(buf, initial_size);
 }
 
-static CMARK_INLINE void S_strbuf_grow_by(cmark_strbuf *buf, bufsize_t add) {
+static inline void S_strbuf_grow_by(cmark_strbuf *buf, bufsize_t add) {
   cmark_strbuf_grow(buf, buf->size + add);
 }
 
@@ -95,7 +94,7 @@ void cmark_strbuf_set(cmark_strbuf *buf, const unsigned char *data,
 
 void cmark_strbuf_sets(cmark_strbuf *buf, const char *string) {
   cmark_strbuf_set(buf, (const unsigned char *)string,
-                   string ? strlen(string) : 0);
+                   string ? (bufsize_t)strlen(string) : 0);
 }
 
 void cmark_strbuf_putc(cmark_strbuf *buf, int c) {
@@ -116,7 +115,7 @@ void cmark_strbuf_put(cmark_strbuf *buf, const unsigned char *data,
 }
 
 void cmark_strbuf_puts(cmark_strbuf *buf, const char *string) {
-  cmark_strbuf_put(buf, (const unsigned char *)string, strlen(string));
+  cmark_strbuf_put(buf, (const unsigned char *)string, (bufsize_t)strlen(string));
 }
 
 void cmark_strbuf_copy_cstr(char *data, bufsize_t datasize,

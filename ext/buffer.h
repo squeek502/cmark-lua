@@ -1,12 +1,12 @@
 #ifndef CMARK_BUFFER_H
 #define CMARK_BUFFER_H
 
-#include <stddef.h>
-#include <stdarg.h>
-#include <string.h>
 #include <limits.h>
+#include <stdarg.h>
+#include <stddef.h>
 #include <stdint.h>
-#include "config.h"
+#include <string.h>
+
 #include "cmark.h"
 
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ void cmark_strbuf_copy_cstr(char *data, bufsize_t datasize,
                             const cmark_strbuf *buf);
 
 /*
-static CMARK_INLINE const char *cmark_strbuf_cstr(const cmark_strbuf *buf) {
+static inline const char *cmark_strbuf_cstr(const cmark_strbuf *buf) {
  return (char *)buf->ptr;
 }
 */
